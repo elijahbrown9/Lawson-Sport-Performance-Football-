@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-brand-white text-brand-navy antialiased;
+  font-feature-settings: 'ss01' on, 'cv01' on;
+}
+
+.section-wrap {
+  @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+.section-padding {
+  @apply py-20 sm:py-24;
+}
+
+.surface-panel {
+  @apply rounded-2xl border border-slate-200 bg-white shadow-card;
+}
