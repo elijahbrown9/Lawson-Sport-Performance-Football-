@@ -56,9 +56,9 @@ export default function Home() {
     <>
       <Navbar />
       <main id="home" className="bg-brand-white">
-        <section className="section-wrap grid gap-12 py-20 lg:grid-cols-[1.05fr_0.95fr] lg:py-24">
-          <div className="space-y-8">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand-sky">
+        <section className="section-wrap section-padding grid gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="space-y-9">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brand-sky">
               Lawson Sport Performance
             </p>
             <h1 className="text-4xl font-bold tracking-tight text-brand-navy sm:text-5xl lg:text-6xl">
@@ -71,8 +71,15 @@ export default function Home() {
               <Button href="#contact" variant="primary">Join Training</Button>
               <Button href="#programs" variant="secondary">View Programs</Button>
             </div>
+            <div className="grid max-w-xl gap-3 sm:grid-cols-3">
+              {['Strength', 'Speed', 'Resilience'].map((pillar) => (
+                <div key={pillar} className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-center text-xs font-semibold uppercase tracking-[0.08em] text-slate-600">
+                  {pillar}
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="rounded-2xl border border-slate-200 bg-brand-gray p-8 shadow-card">
+          <div className="surface-panel bg-brand-gray p-8">
             <div className="flex h-full min-h-[320px] items-center justify-center rounded-xl border-2 border-dashed border-brand-sky/60 bg-white/80 text-center">
               <p className="max-w-xs text-sm font-medium text-slate-600">
                 Premium visual placeholder for future athlete photography and facility imagery.
@@ -81,14 +88,14 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="about" className="bg-brand-gray py-20">
+        <section id="about" className="section-padding bg-brand-gray">
           <div className="section-wrap grid gap-10 lg:grid-cols-2">
             <SectionHeading
               eyebrow="About"
               title="Performance training with intent"
               description="Lawson Sport Performance is built on disciplined systems that combine speed, strength, and resilience into one clear development path."
             />
-            <div className="space-y-5 text-slate-700">
+            <div className="surface-panel space-y-5 p-7 text-slate-700">
               <p>
                 Every session has a purpose. We train movement quality, power output, and force application so athletes can perform with confidence under pressure.
               </p>
@@ -102,7 +109,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="programs" className="section-wrap py-20">
+        <section id="programs" className="section-wrap section-padding">
           <SectionHeading
             eyebrow="Programs"
             title="Programs designed for competitive athletes"
@@ -115,7 +122,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="results" className="bg-brand-gray py-20">
+        <section id="results" className="section-padding bg-brand-gray">
           <div className="section-wrap">
             <SectionHeading
               eyebrow="Results"
@@ -130,7 +137,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="section-wrap py-20">
+        <section className="section-wrap section-padding">
           <SectionHeading
             eyebrow="Why Lawson"
             title="A serious environment for measurable growth"
@@ -138,14 +145,15 @@ export default function Home() {
           />
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {differentiators.map((item) => (
-              <article key={item} className="rounded-xl border border-slate-200 bg-white p-6 shadow-card">
-                <p className="text-base font-semibold text-brand-navy">{item}</p>
+              <article key={item} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-card">
+                <p className="text-base font-semibold tracking-wide text-brand-navy">{item}</p>
+                <p className="mt-2 text-sm text-slate-600">Delivered through coached progression, accountability, and measurable checkpoints.</p>
               </article>
             ))}
           </div>
         </section>
 
-        <section id="contact" className="bg-brand-navy py-20 text-brand-white">
+        <section id="contact" className="section-padding bg-brand-navy text-brand-white">
           <div className="section-wrap grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
             <div>
               <SectionHeading

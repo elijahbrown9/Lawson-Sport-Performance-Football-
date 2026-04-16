@@ -15,7 +15,7 @@ export function SectionHeading({
     <header className="max-w-3xl space-y-3">
       {eyebrow && (
         <p
-          className={`text-sm font-semibold uppercase tracking-[0.2em] ${
+          className={`text-xs font-semibold uppercase tracking-[0.22em] ${
             inverted ? 'text-brand-yellow' : 'text-brand-sky'
           }`}
         >
@@ -23,7 +23,7 @@ export function SectionHeading({
         </p>
       )}
       <h2
-        className={`text-3xl font-bold tracking-tight sm:text-4xl ${
+        className={`text-3xl font-bold leading-tight tracking-tight sm:text-4xl ${
           inverted ? 'text-brand-white' : 'text-brand-navy'
         }`}
       >
