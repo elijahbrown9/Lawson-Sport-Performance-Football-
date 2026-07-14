@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Player Profiles · James Lawson Lightning · Lawson Sport Performance</title>
+  <meta name="description" content="James Lawson Lightning player profiles — athlete ratings across all measured metrics, ranked by overall score.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="wordmark" href="index.html">Lawson<span class="slash">/</span><span class="light">Sport Performance</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="football.html">Football 4-Day</a></li>
+        <li><a href="all-sport.html">All-Sport 2-Day</a></li>
+        <li><a href="profiles.html" class="active">Player Profiles</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero compact">
+    <div class="wrap hero-inner">
+      <p class="eyebrow">Athlete Ratings · All Measured Metrics</p>
+      <h1>Player <span class="accent">Profiles</span></h1>
+      <p class="sub">
+        Every score is a percentile against this roster — a 90 in Strength means the athlete
+        out-lifts 90% of the team. An overall score and rank is only given to athletes who
+        have completed all six tests — it isn't fair to score anyone on partial data.
+      </p>
+      <div class="legend-row">
+        <span class="tier-chip"><span class="dot" style="background:var(--tier-elite)"></span>Elite <small>80–100 overall</small></span>
+        <span class="tier-chip"><span class="dot" style="background:var(--tier-advanced)"></span>Advanced <small>65–79</small></span>
+        <span class="tier-chip"><span class="dot" style="background:var(--tier-solid)"></span>Solid <small>45–64</small></span>
+        <span class="tier-chip"><span class="dot" style="background:var(--tier-developing)"></span>Developing <small>under 45</small></span>
+        <span class="tier-chip"><span class="dot" style="background:var(--develop)"></span>▼ <small>category to develop next</small></span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">How to read these ratings</p>
+          <h2>Six categories. One standard.</h2>
+          <p>
+            <b style="color:var(--ink)">Explosiveness</b> (vertical + broad jump) ·
+            <b style="color:var(--ink)">Upper Body</b> (bench press) ·
+            <b style="color:var(--ink)">Lower Body</b> (front squat + deadlifts) ·
+            <b style="color:var(--ink)">Rel. Strength</b> (max pull-ups) ·
+            <b style="color:var(--ink)">Speed &amp; Agility</b> (5-10-5) ·
+            <b style="color:var(--ink)">Engine</b> (mile).
+            Balance measures how well-rounded an athlete is — 100 means every category is at
+            the same level; the ▼ marks the category to develop next.
+          </p>
+        </div>
+
+        <h3 class="subhead">Fully Tested &amp; Scored</h3>
+        <p>Athletes who have completed the full six-test battery, ranked by overall.</p>
+        <div class="controls" role="group" aria-label="Sort athletes">
+          <button data-sort="overall" class="on">Sort: Overall</button>
+          <button data-sort="balance">Sort: Balance</button>
+          <button data-sort="name">Sort: Name</button>
+        </div>
+        <div class="profiles-grid" id="tested-grid"></div>
+
+        <h3 class="subhead">Awaiting Full Testing</h3>
+        <p>
+          These athletes haven't completed the full six-test battery, so no overall score is
+          given — that wouldn't be a fair comparison. Their tested categories are shown
+          roster-relative, and a full score will populate as soon as the remaining tests are in.
+        </p>
+        <div class="profiles-grid" id="pending-grid"></div>
+
+        <div class="callout" style="margin-top:36px;">
+          <h4>Metric key</h4>
+          <p>VJ vertical jump · BJ broad jump · BP bench press · FS front squat · TB trap bar deadlift · PU max pull-ups · 5-10-5 pro agility · MILE mile time. <a href="pdfs/Lawson_Lightning_Player_Profiles.pdf" style="color:var(--accent)">Download the printable profiles PDF →</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <span class="fine">Lawson <span style="color:var(--accent)">/</span> Sport Performance</span>
+      <span class="fine">Player Profiles · James Lawson Lightning · Nashville, TN · 2026</span>
+    </div>
+  </footer>
+
+  <script src="assets/js/data-profiles.js"></script>
+  <script src="assets/js/site.js"></script>
+  <script>renderProfiles();</script>
+
+</body>
+</html>
