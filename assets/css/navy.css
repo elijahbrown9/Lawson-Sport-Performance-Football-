@@ -4,6 +4,8 @@
    matching the approved reference designs.
    ============================================================ */
 
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
 :root {
   --nv-bg: #0e2143;
   --nv-bg-deep: #0a1930;
@@ -245,3 +247,52 @@ body.navy {
   .lb-bar { display: none; }
   .pg-hero-inner { padding-bottom: 100px; }
 }
+
+
+/* ============================================================
+   Unified type system — same fonts as the rest of the site
+   (Barlow Condensed display, Inter body). Layouts unchanged.
+   ============================================================ */
+body.navy { font-family: 'Inter', system-ui, sans-serif; }
+
+.nv-wordmark, .pg-hero-inner h1, .lb-hero h1, .pg-card h3, .pg-docs h2,
+.pg-card .stats b, .lb-toggle button, .lb-name b, .lb-rank, .lb-mark,
+.pg-card .go {
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+}
+.nv-wordmark { font-size: 21px; letter-spacing: 0.06em; font-weight: 700; }
+.nv-links a {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15.5px; font-weight: 600; letter-spacing: 0.12em;
+}
+.nv-eyebrow {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14.5px; font-weight: 600; letter-spacing: 0.26em;
+}
+.pg-card .kicker {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13.5px; font-weight: 600; letter-spacing: 0.2em;
+}
+.pg-card h3 { font-size: 26px; letter-spacing: 0.04em; }
+.pg-card .stats b { font-size: 24px; }
+.pg-card .stats div small {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11.5px; letter-spacing: 0.12em; font-weight: 600;
+}
+.pg-card .go { font-size: 16px; letter-spacing: 0.1em; text-transform: uppercase; }
+.pg-docs h2 { font-size: 22px; letter-spacing: 0.06em; }
+.pg-docs .doc-links a { font-family: 'Barlow Condensed', sans-serif; font-size: 17px; letter-spacing: 0.04em; font-weight: 600; }
+.nv-footer-light span, .nv-footer-dark span {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px; font-weight: 600; letter-spacing: 0.16em;
+}
+.lb-record { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.16em; }
+.lb-record b { font-size: 30px; font-weight: 700; }
+.lb-toggle button { font-size: 16px; letter-spacing: 0.1em; }
+.lb-filters button { font-family: 'Barlow Condensed', sans-serif; font-size: 13.5px; font-weight: 600; letter-spacing: 0.1em; }
+.lb-name b { font-size: 18px; letter-spacing: 0.05em; }
+.lb-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; }
+.lb-rank { font-size: 19px; }
+.lb-row.top3 .lb-rank { font-size: 21px; }
+.lb-mark { font-size: 17px; }
+.lb-count { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; }

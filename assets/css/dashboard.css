@@ -3,6 +3,8 @@
    Matches the approved Training Dashboard reference design.
    ============================================================ */
 
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
 :root {
   --db-bg: #f4f7fb;
   --db-navy: #0e2144;
@@ -143,3 +145,24 @@ body.dashboard {
 @media (max-width: 560px) {
   .db-days { grid-auto-flow: row; grid-template-columns: 1fr 1fr; }
 }
+
+
+/* ============================================================
+   Unified type system — same fonts as the rest of the site.
+   ============================================================ */
+body.dashboard { font-family: 'Inter', system-ui, sans-serif; }
+.db-header .brand { font-family: 'Barlow Condensed', sans-serif; font-size: 19px; letter-spacing: 0.08em; font-weight: 700; }
+.db-header .date { font-family: 'Barlow Condensed', sans-serif; font-size: 13.5px; font-weight: 600; letter-spacing: 0.18em; }
+.db-programs button, .db-days button {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 17px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.db-card h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 25px; letter-spacing: 0.04em; text-transform: uppercase; }
+.db-weeknav .label { font-family: 'Barlow Condensed', sans-serif; font-size: 19px; letter-spacing: 0.06em; text-transform: uppercase; }
+.db-weeknav .today { font-family: 'Barlow Condensed', sans-serif; font-size: 13.5px; font-weight: 600; }
+.db-weeknav .label .deload { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 600; }
+.db-session-head h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 18.5px; letter-spacing: 0.05em; text-transform: uppercase; }
+.db-session-head .wu { font-family: 'Barlow Condensed', sans-serif; font-size: 13.5px; font-weight: 600; letter-spacing: 0.08em; }
+.db-block .letter { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; }
+.db-block .ex { font-family: 'Barlow Condensed', sans-serif; font-size: 17.5px; letter-spacing: 0.04em; text-transform: uppercase; }
+.db-start .save { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
