@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vertical Jump Leaderboards · Lawson Sport Performance</title>
+  <meta name="description" content="James Lawson Lightning vertical jump leaderboards — every tested athlete, boys and girls, ranked by best mark across all sports.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link rel="stylesheet" href="assets/css/navy.css">
+</head>
+<body class="navy">
+
+  <nav class="nv-nav">
+    <div class="nv-wrap nv-nav-inner">
+      <a class="nv-wordmark" href="index.html"><span class="bolt">⚡</span>Lawson<span class="slash">/</span>Sport Performance</a>
+      <ul class="nv-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="profiles.html">Player Profiles</a></li>
+        <li><a href="leaderboards.html" class="active">Leaderboards</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="nv-hero">
+    <div class="nv-wrap lb-hero">
+      <p class="nv-eyebrow"><span class="bolt">⚡</span>James Lawson Lightning · Every Tested Athlete</p>
+      <h1>Vertical Jump <span class="accent">Leaderboards</span></h1>
+      <p class="lb-record" id="lb-record"></p>
+      <div class="lb-toggle" id="lb-toggle" role="group" aria-label="Boys or girls board"></div>
+      <div class="lb-filters" id="lb-filters" role="group" aria-label="Filter by sport"></div>
+      <div class="lb-search">
+        <input type="search" id="lb-search-input" placeholder="Search a name…" aria-label="Search athletes by name">
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="nv-wrap">
+      <div class="lb-board" id="lb-board"></div>
+      <p class="lb-count" id="lb-count"></p>
+    </div>
+  </main>
+
+  <footer class="nv-footer-dark">
+    <div class="nv-wrap">
+      <span>Lawson Sport Performance</span>
+      <span>Best mark counts · Updated July 2026 · Nashville, TN</span>
+    </div>
+  </footer>
+
+  <script src="assets/js/data-leaderboards.js"></script>
+  <script src="assets/js/leaderboards.js"></script>
+  <script>renderLeaderboards();</script>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Training Dashboard · Lawson Sport Performance</title>
+  <meta name="description" content="Lawson Sport Performance training dashboard — set a Week 1 start date and see today's session for the Football 4-Day or All-Sport 2-Day program.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body class="dashboard">
+
+  <header class="db-header">
+    <div class="db-wrap">
+      <a class="brand" href="index.html"><span class="bolt">⚡</span>Lawson <span class="slash">/</span> Sport Performance · Training Dashboard</a>
+      <div class="date" id="db-date"></div>
+    </div>
+  </header>
+  <div class="db-ribbon"></div>
+
+  <main class="db-wrap">
+    <div class="db-programs" id="db-programs" role="group" aria-label="Choose a program"></div>
+
+    <div class="db-card">
+      <h2>Set a start date</h2>
+      <div class="db-start">
+        <label for="db-start-input">Week 1 start date:</label>
+        <input type="date" id="db-start-input">
+        <button class="save" id="db-save">Save</button>
+        <span class="saved-note" id="db-start-note"></span>
+      </div>
+    </div>
+
+    <div class="db-weeknav">
+      <button class="arrow" id="db-prev" aria-label="Previous week">‹</button>
+      <span class="label" id="db-week-label"></span>
+      <button class="today" id="db-today">Today</button>
+      <button class="arrow" id="db-next" aria-label="Next week">›</button>
+    </div>
+
+    <div class="db-days" id="db-days" role="group" aria-label="Choose a day"></div>
+
+    <div class="db-session" id="db-session"></div>
+
+    <p class="db-note">Set each program's Week 1 start date once — the dashboard finds today's week automatically. Use ‹ › to preview other weeks.</p>
+  </main>
+
+  <script src="assets/js/data-football.js"></script>
+  <script src="assets/js/data-allsport.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+  <script>renderDashboard();</script>
+
+</body>
+</html>
