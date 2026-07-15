@@ -1,0 +1,145 @@
+/* ============================================================
+   LAWSON / SPORT PERFORMANCE — training dashboard (light theme)
+   Matches the approved Training Dashboard reference design.
+   ============================================================ */
+
+:root {
+  --db-bg: #f4f7fb;
+  --db-navy: #0e2144;
+  --db-yellow: #ffc72b;
+  --db-blue: #8fc8e7;
+  --db-ink: #22314e;
+  --db-muted: #687688;
+  --db-line: #e4e9f1;
+  --db-sans: Arial, Helvetica, sans-serif;
+  --db-mono: 'DejaVu Sans Mono', ui-monospace, 'Cascadia Mono', Consolas, Menlo, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body.dashboard {
+  background: var(--db-bg);
+  color: var(--db-ink);
+  font-family: var(--db-sans);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.db-wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+/* header */
+.db-header { background: var(--db-navy); padding: 12px 0 10px; }
+.db-header .brand {
+  color: #fff; font-weight: bold; font-size: 15px;
+  letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+  display: inline-flex; gap: 8px; align-items: center;
+}
+.db-header .brand .bolt, .db-header .brand .slash { color: var(--db-yellow); }
+.db-header .date {
+  font-family: var(--db-mono); font-size: 12px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--db-blue); margin-top: 3px;
+}
+.db-ribbon {
+  height: 10px;
+  background: repeating-linear-gradient(115deg,
+    var(--db-yellow) 0 26px, var(--db-navy) 26px 34px,
+    var(--db-blue) 34px 42px, var(--db-navy) 42px 50px);
+}
+
+/* program toggle */
+.db-programs { display: flex; gap: 14px; margin: 26px 0 22px; }
+.db-programs button {
+  flex: 1; cursor: pointer; padding: 13px 10px; border-radius: 10px;
+  font-family: var(--db-sans); font-weight: bold; font-size: 14.5px;
+  color: var(--db-navy); background: #fff; border: 1px solid var(--db-line);
+  box-shadow: 0 1px 3px rgba(14, 33, 68, 0.06);
+}
+.db-programs button.on { background: var(--db-navy); color: #fff; border-color: var(--db-navy); }
+
+/* start date card */
+.db-card {
+  background: #fff; border: 1px solid var(--db-line); border-radius: 10px;
+  padding: 20px 24px 22px; box-shadow: 0 1px 3px rgba(14, 33, 68, 0.05);
+  margin-bottom: 22px;
+}
+.db-card h2 {
+  font-size: 22px; font-weight: bold; color: var(--db-navy);
+  padding-bottom: 14px; border-bottom: 4px solid #ecf2f9; margin-bottom: 16px;
+}
+.db-start { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.db-start label { color: var(--db-muted); font-size: 14px; }
+.db-start input[type="date"] {
+  font-family: var(--db-mono); font-size: 13px; color: var(--db-navy);
+  padding: 7px 10px; border: 1px solid #c9d2e0; border-radius: 6px; background: #fff;
+}
+.db-start .save {
+  cursor: pointer; font-weight: bold; font-size: 13.5px; color: var(--db-navy);
+  background: var(--db-yellow); border: none; border-radius: 6px; padding: 8px 16px;
+}
+.db-start .saved-note { font-size: 12.5px; color: var(--db-muted); }
+
+/* week navigation */
+.db-weeknav { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.db-weeknav .arrow {
+  cursor: pointer; width: 32px; height: 32px; border-radius: 50%;
+  background: #fff; border: 1px solid var(--db-line); color: var(--db-navy);
+  font-size: 15px; line-height: 1;
+}
+.db-weeknav .label {
+  font-weight: bold; font-size: 16px; color: var(--db-navy);
+  flex: 1; text-align: center;
+}
+.db-weeknav .label .deload {
+  font-family: var(--db-mono); font-size: 10.5px; letter-spacing: 0.1em;
+  color: #b8860b; margin-left: 8px; text-transform: uppercase;
+}
+.db-weeknav .today {
+  cursor: pointer; font-family: var(--db-mono); font-size: 11.5px;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--db-navy);
+  background: #fff; border: 1px solid var(--db-line); border-radius: 6px; padding: 7px 12px;
+}
+
+/* day tabs */
+.db-days { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 12px; margin-bottom: 18px; }
+.db-days button {
+  cursor: pointer; padding: 11px 8px; border-radius: 8px;
+  font-weight: bold; font-size: 14px; color: var(--db-navy);
+  background: #fff; border: 1px solid var(--db-line);
+}
+.db-days button.on { background: var(--db-yellow); border-color: var(--db-yellow); }
+
+/* session card */
+.db-session {
+  background: #fff; border-radius: 10px; overflow: hidden;
+  border-left: 5px solid var(--db-yellow);
+  box-shadow: 0 1px 3px rgba(14, 33, 68, 0.06);
+  margin-bottom: 18px;
+}
+.db-session-head {
+  background: var(--db-navy); color: #fff;
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 14px; flex-wrap: wrap; padding: 13px 20px;
+}
+.db-session-head h3 { font-size: 15.5px; font-weight: bold; }
+.db-session-head .wu {
+  font-family: var(--db-mono); font-size: 11px; letter-spacing: 0.06em;
+  color: var(--db-yellow);
+}
+.db-block { display: flex; gap: 18px; padding: 13px 20px; border-bottom: 1px solid var(--db-line); }
+.db-block:last-child { border-bottom: none; }
+.db-block .letter {
+  font-family: var(--db-mono); font-weight: bold; font-size: 13px;
+  color: #b8860b; width: 22px; flex-shrink: 0; padding-top: 1px;
+}
+.db-block .ex { font-weight: bold; font-size: 14.5px; color: var(--db-navy); }
+.db-block .rx { font-size: 13.5px; color: var(--db-muted); margin-top: 2px; }
+
+.db-note {
+  text-align: center; font-size: 12.5px; color: var(--db-muted);
+  padding: 6px 0 40px;
+}
+
+@media (max-width: 560px) {
+  .db-days { grid-auto-flow: row; grid-template-columns: 1fr 1fr; }
+}
