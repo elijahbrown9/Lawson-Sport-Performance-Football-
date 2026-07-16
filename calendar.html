@@ -123,6 +123,7 @@ const TESTMAP = {
             15:{0:"Vertical + Fly 10",1:"Broad + Bench/FS heavy set — final"}}
 };
 const KPI_WEEKS = [7,11,15];
+const SUMMER_END = new Date("2026-07-30T23:59:59"); // last day of the summer schedule — school-year times TBD
 const SPD = {
  "SPD-A": {title:"Speed Block · Acceleration", rows:[["A","Warm-Up Script","WU by week · 8 min"],["B","Acceleration","4-6 x 10-15yd from varied starts · full walk-back rest"],["C","Sport Work","Hand back to sport coach"]]},
  "SPD-F": {title:"Speed Block · Max Velocity", rows:[["A","Warm-Up Script","WU by week · 8 min"],["B","Fly Build-Ups","2-3 x (20yd build + 10yd fly) · full rest · trains the Fly 10 KPI"],["C","Sport Work","Hand back to sport coach"]]},
@@ -150,6 +151,13 @@ function render(){
   document.getElementById("srows").innerHTML = TEAMS.map(t=>
    `<div class="srow"><label>${t.name}<small>${t.prog==="football"?"Football 4-Day":"All-Sport 2-Day"} · ${t.time}</small></label>
     <input type="date" id="sd-${t.id}" value="${starts[t.id]||""}"></div>`).join("");
+  // after the summer schedule ends, the calendar goes quiet until school-year times are set
+  if(date > SUMMER_END){
+    const ban0 = document.getElementById("kpibanner"); ban0.className="kpiban"; ban0.innerHTML="";
+    document.getElementById("todaysub").textContent = "Summer schedule complete";
+    document.getElementById("snapshot").innerHTML = `<div class="empty">The summer schedule wrapped up Thursday, July 30. The school-year schedule — with new session times — is coming soon.</div>`;
+    return;
+  }
   // KPI banner
   const ban = document.getElementById("kpibanner");
   let liveTeams=[], upTeams=[], upDays=null;
@@ -215,7 +223,7 @@ function nextKpiTarget(){
     KPI_WEEKS.forEach(K=>{
       const d = new Date(s+"T07:00:00");   // testing starts with the 7:00 session
       d.setDate(d.getDate() + (K-1)*7);
-      if(d > now && (!best || d < best.d)) best = {d, K};
+      if(d > now && d <= SUMMER_END && (!best || d < best.d)) best = {d, K};
     });
   });
   return best;
