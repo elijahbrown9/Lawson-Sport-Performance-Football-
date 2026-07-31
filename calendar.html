@@ -126,12 +126,12 @@ header{background:linear-gradient(160deg,var(--navy),var(--navy-deep));color:#ff
    <tbody>
     <tr><td class="day">Monday</td>
         <td><span class="t">2:45–3:15 PM</span><span class="who">Football</span><div class="sub2">Football 4-Day · trains alone</div></td>
-        <td><span class="t">3:15–3:45 PM</span><span class="who">Girls Pool</span><div class="sub2">Soccer · Volleyball · Track · All-Sport 2-Day</div></td></tr>
+        <td><span class="t">3:15–3:45 PM</span><span class="who">Girls Pool</span><div class="sub2">Soccer · Volleyball · Softball · Track · All-Sport 2-Day</div></td></tr>
     <tr><td class="day">Tuesday</td>
         <td><span class="t">2:45–3:15 PM</span><span class="who">Football</span><div class="sub2">Football 4-Day · trains alone</div></td>
         <td><span class="t">3:15–3:45 PM</span><span class="who">Boys Pool</span><div class="sub2">Basketball · Soccer · Track · All-Sport 2-Day</div></td></tr>
     <tr><td class="day">Wednesday</td>
-        <td><span class="t">2:45–3:15 PM</span><span class="who">Girls Pool</span><div class="sub2">Soccer · Volleyball · Track · All-Sport 2-Day</div></td>
+        <td><span class="t">2:45–3:15 PM</span><span class="who">Girls Pool</span><div class="sub2">Soccer · Volleyball · Softball · Track · All-Sport 2-Day</div></td>
         <td><span class="t">3:15–3:45 PM</span><span class="who">Boys Pool</span><div class="sub2">Basketball · Soccer · Track · All-Sport 2-Day</div></td></tr>
     <tr><td class="day">Thursday</td>
         <td><span class="t">2:45–3:10 PM</span><span class="who">Football</span><div class="sub2">Football 4-Day · trains alone</div></td>
@@ -143,7 +143,7 @@ header{background:linear-gradient(160deg,var(--navy),var(--navy-deep));color:#ff
   </div>
   <ul class="wksnotes">
    <li><b>Football always trains separately</b> — never combined with another sport.</li>
-   <li><b>Girls Pool</b> (Soccer · Volleyball · Track) lifts together as one combined session, twice a week — Monday &amp; Wednesday.</li>
+   <li><b>Girls Pool</b> (Soccer · Volleyball · Softball · Track) lifts together as one combined session, twice a week — Monday &amp; Wednesday.</li>
    <li><b>Boys Pool</b> (Basketball · Soccer · Track) lifts together as one combined session, twice a week — Tuesday &amp; Wednesday.</li>
   </ul>
  </div>
@@ -171,7 +171,7 @@ const SUMMER_END = new Date("2026-07-30T23:59:59"); // last day of the summer sc
 const SCHOOL_START = new Date("2026-08-03T00:00:00"); // school-year schedule begins Monday, Aug 3
 const SCHOOL_TEAMS = [
  {id:"fb", name:"Football", time:"2:45\u20133:15", times:{4:"2:45\u20133:10"}, prog:"football", sched:{1:0, 2:1, 4:2}},
- {id:"gpool", name:"Girls Pool", tag:"Soccer \u00b7 Volleyball \u00b7 Track", time:"", times:{1:"3:15\u20133:45", 3:"2:45\u20133:15"}, prog:"twoday", sched:{1:0, 3:1}},
+ {id:"gpool", name:"Girls Pool", tag:"Soccer \u00b7 Volleyball \u00b7 Softball \u00b7 Track", time:"", times:{1:"3:15\u20133:45", 3:"2:45\u20133:15"}, prog:"twoday", sched:{1:0, 3:1}},
  {id:"bpool", name:"Boys Pool", tag:"Basketball \u00b7 Soccer \u00b7 Track", time:"", times:{2:"3:15\u20133:45", 3:"3:15\u20133:45"}, prog:"twoday", sched:{2:0, 3:1}},
 ];
 function teamsFor(date){ return date >= SCHOOL_START ? SCHOOL_TEAMS : TEAMS; }
