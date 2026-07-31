@@ -145,6 +145,7 @@ header{background:linear-gradient(160deg,var(--navy),var(--navy-deep));color:#ff
    <li><b>Football always trains separately</b> — never combined with another sport.</li>
    <li><b>Girls Pool</b> (Soccer · Volleyball · Softball · Track) lifts together as one combined session, twice a week — Monday &amp; Wednesday.</li>
    <li><b>Boys Pool</b> (Basketball · Soccer · Track) lifts together as one combined session, twice a week — Tuesday &amp; Wednesday.</li>
+   <li><b>The program picks up where summer left off</b> — everyone resumes at Week 9 (Phase 3 · Max Strength) on Aug 3, not back at Week 1.</li>
   </ul>
  </div>
 </div>
@@ -179,7 +180,7 @@ const SPD = {
  "SPD-A": {title:"Speed Block · Acceleration", rows:[["A","Warm-Up Script","WU by week · 8 min"],["B","Acceleration","4-6 x 10-15yd from varied starts · full walk-back rest"],["C","Sport Work","Hand back to sport coach"]]},
  "SPD-F": {title:"Speed Block · Max Velocity", rows:[["A","Warm-Up Script","WU by week · 8 min"],["B","Fly Build-Ups","2-3 x (20yd build + 10yd fly) · full rest · trains the Fly 10 KPI"],["C","Sport Work","Hand back to sport coach"]]},
 };
-let starts = {track:"2026-06-08", vb:"2026-06-08", vfb:"2026-06-08", ffb:"2026-06-08", soc:"2026-06-08", fb:"2026-08-03", gpool:"2026-08-03", bpool:"2026-08-03"};
+let starts = {track:"2026-06-08", vb:"2026-06-08", vfb:"2026-06-08", ffb:"2026-06-08", soc:"2026-06-08", fb:"2026-06-08", gpool:"2026-06-08", bpool:"2026-06-08"};
 async function loadStarts(){ try{ const r = localStorage.getItem("team-start-dates"); if(r) Object.assign(starts, JSON.parse(r)); }catch(e){} }
 async function saveStarts(){
   [...TEAMS, ...SCHOOL_TEAMS].forEach(t=>{ const el=document.getElementById("sd-"+t.id); if(el && el.value) starts[t.id]=el.value; });
