@@ -463,3 +463,50 @@ details.week .week-body { padding: 0 20px 20px; display: grid; gap: 16px; }
   .hero-inner { padding: 56px 0 44px; }
   .cat-row { grid-template-columns: 104px 1fr 32px; }
 }
+
+/* ---------- The Standard — ranked list additions ---------- */
+.rank-num { color: var(--muted); font-weight: 600; }
+.athlete-name { display: flex; align-items: baseline; gap: 7px; }
+.athlete-badges { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.measured-badge {
+  font-family: var(--font-display);
+  font-size: 11.5px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; white-space: nowrap;
+  color: var(--muted); border: 1px solid var(--border);
+  background: var(--surface-2); border-radius: 999px; padding: 4px 10px;
+}
+
+/* estimated (not yet tested) categories — hatched bar + EST value */
+.cat-row { grid-template-columns: 118px 1fr 46px; }
+.cat-name.est { color: var(--faint); }
+.cat-fill.est {
+  background: repeating-linear-gradient(135deg,
+    rgba(159, 176, 204, 0.55) 0 3px, rgba(159, 176, 204, 0.12) 3px 7px);
+}
+.cat-val.est {
+  font-size: 11.5px; font-weight: 600; letter-spacing: 0.04em;
+  color: var(--faint); white-space: nowrap;
+}
+.dot-est {
+  background: repeating-linear-gradient(135deg,
+    rgba(159, 176, 204, 0.75) 0 2px, rgba(159, 176, 204, 0.15) 2px 4px);
+}
+
+/* search + count line */
+.search-input {
+  font-family: var(--font-display);
+  font-size: 14px; font-weight: 600; letter-spacing: 0.08em;
+  color: var(--ink); background: var(--surface);
+  border: 1px solid var(--border); border-radius: 999px;
+  padding: 7px 16px; min-width: 170px;
+}
+.search-input::placeholder { color: var(--faint); text-transform: uppercase; letter-spacing: 0.1em; }
+.search-input:focus { outline: none; border-color: var(--accent); }
+.count-line {
+  font-family: var(--font-display);
+  font-size: 13.5px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--muted); margin-top: 16px;
+}
+@media (max-width: 720px) {
+  .cat-row { grid-template-columns: 104px 1fr 44px; }
+}
