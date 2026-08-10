@@ -384,7 +384,33 @@ const CLASS_TESTS = {
  "2027-04-29":{thu:"Presidential final — stations (curl-up · push-up · sit-and-reach)"},
  "2027-04-30":{all:"Presidential final — one-mile run"},
 };
-const SPEED_ROWS = [["A","Sprint ABCs","technique warm-up circuit"],["B","Acceleration","varied starts · full walk-back rest"],["C","Fly 10 Build-Ups","build + fly · trains the Fly 10 KPI"],["D","Med Ball Power","throws · full rest"]];
+// Tuesday speed session — prescriptions follow the program's speed track and progress with the phase
+function speedRowsFor(info){
+  const abc = ["A","Sprint ABCs","2 x 10yd each: A-march · A-skip · B-skip · high knees · straight-leg bounds"];
+  const mb  = ["D","Med Ball Power","Chest pass 3x3 + overhead slam 3x3 · full rest · max intent"];
+  if(info.p0) return [abc,
+    ["B","Acceleration Teaching","4-6 x 10yd from tall + falling starts · walk-back rest · posture first"],
+    ["C","Build-Ups","2-3 x 30yd @ 70-80% · smooth and tall, no timing"], mb];
+  if(info.prep || info.pres) return [abc,
+    ["B","Acceleration","4 x 10-15yd @ 85% · walk-back rest — maintenance only"],
+    ["C","Build-Ups","2 x 30yd @ 80% · easy speed"], mb];
+  const wk = info.wk;
+  if(DATA.twoday[String(wk)].deload) return [abc,
+    ["B","Acceleration (light)","3 x 10yd @ 80% · walk-back rest — stay fresh for KPI checks"],
+    ["C","Fly 10 Rehearsal","1-2 easy build-ups · rehearse the pattern, no timing today"], mb];
+  if(wk<=2) return [abc,
+    ["B","Acceleration","6 x 10yd from 3-point + push-up starts · walk-back rest"],
+    ["C","Build-Ups","3 x 40yd @ 80% · full rest"], mb];
+  if(wk<=6) return [abc,
+    ["B","Acceleration","6-8 x 10yd from varied starts · walk-back rest"],
+    ["C","Build-Ups","3-4 x 40yd @ 80-90% · full rest"], mb];
+  if(wk<=10) return [abc,
+    ["B","Acceleration","5-6 x 15-20yd · full rest between reps"],
+    ["C","Fly 10s","2-3 x (20yd build + 10yd fly) · full rest · trains the Fly 10 KPI"], mb];
+  return [abc,
+    ["B","Acceleration","4-5 x 20yd · full rest · maintain, don't accumulate"],
+    ["C","Fly 10s (timed)","3-4 reps · this is the KPI — time them"], mb];
+}
 const COND_ROWS  = [["A","Tempo Runs","by conditioning tier"],["B","Core Circuit","2–3 rounds"],["C","Mobility + Arm Care","close it down"]];
 const P0_ROWS    = [["A","Movement Literacy","bodyweight only — squat, hinge, lunge, push, pull, carry"],["B","Positions & Bracing","front rack, hinge set, plank standards"],["C","Progression","empty bar Friday, Aug 28"]];
 const SCREEN_ROWS= [["A","Movement Screen","full screen · first three weeks"],["B","Baseline Battery","full testing battery"],["C","Placement","into the 2-Day · Foundation track"]];
@@ -423,7 +449,7 @@ function classSectionHTML(date, dISO){
     else if(info.p0){
       rows = (c.ltad ? SCREEN_ROWS : P0_ROWS);
       title = c.ltad ? "Movement Screen + Baseline" : "Phase 0 · Movement Literacy";
-      if(kind==="speed"){ title="Speed & Power"; rows=SPEED_ROWS; }
+      if(kind==="speed"){ title="Speed & Power"; rows=speedRowsFor(info); }
       if(kind==="cond"){ title="Conditioning"; rows=COND_ROWS; }
       badges += `<span class="badge b-p0">PHASE 0</span>`;
     }
@@ -432,7 +458,7 @@ function classSectionHTML(date, dISO){
       const w = DATA.twoday[String(info.wk)];
       if(kind==="lift1"){ const d=w.days[0]; title=d.title; rows=d.rows; wu=w.wu; }
       else if(kind==="lift2"){ const d=w.days[1]; title=d.title; rows=c.ltad? d.rows.concat([["W","Wellness Module","15 min · every block day"]]) : d.rows; wu=w.wu; }
-      else if(kind==="speed"){ title="Speed & Power"; rows=SPEED_ROWS; }
+      else if(kind==="speed"){ title="Speed & Power"; rows=speedRowsFor(info); }
       else { title="Conditioning"; rows=COND_ROWS; }
       badges += `<span class="badge b-wk">WK ${info.wk}</span>` + (w.deload?`<span class="badge b-dl">DELOAD</span>`:"");
     }
@@ -512,8 +538,8 @@ function render(){
   const cls = classSectionHTML(date, dstr);
   document.getElementById("todaysub").textContent =
     (active.length? active.length+" teams" : "No teams") + (cls.count? ` · ${cls.count} classes` : "") + (active.length||cls.count? " today" : " scheduled");
-  if(!active.length){ box.innerHTML = `<div class="empty">No teams scheduled today. Use the date picker to preview another day.</div>` + cls.html; return; }
-  box.innerHTML = active.map(t=>{
+  if(!active.length){ box.innerHTML = cls.html + (cls.html?`<div class="classhdr">After-School Teams</div>`:"") + `<div class="empty">No teams scheduled today. Use the date picker to preview another day.</div>`; return; }
+  box.innerHTML = cls.html + (cls.html?`<div class="classhdr">After-School Teams</div>`:"") + active.map(t=>{
     const slot = t.sched[dow];
     const wk = weekFor(t, date);
     let badges="", body="", sub="", sub0;
@@ -543,7 +569,7 @@ function render(){
       </div>
       <div class="tbody">${body}</div>
     </div>`;
-  }).join("") + cls.html;
+  }).join("");
 }
 function nextKpiTarget(){
   const now = new Date();
