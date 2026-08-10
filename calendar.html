@@ -411,10 +411,48 @@ function speedRowsFor(info){
     ["B","Acceleration","4-5 x 20yd · full rest · maintain, don't accumulate"],
     ["C","Fly 10s (timed)","3-4 reps · this is the KPI — time them"], mb];
 }
-const COND_ROWS  = [["A","Tempo Runs","by conditioning tier"],["B","Core Circuit","2–3 rounds"],["C","Mobility + Arm Care","close it down"]];
-const P0_ROWS    = [["A","Movement Literacy","bodyweight only — squat, hinge, lunge, push, pull, carry"],["B","Positions & Bracing","front rack, hinge set, plank standards"],["C","Progression","empty bar Friday, Aug 28"]];
-const SCREEN_ROWS= [["A","Movement Screen","full screen · first three weeks"],["B","Baseline Battery","full testing battery"],["C","Placement","into the 2-Day · Foundation track"]];
-const PREP_ROWS  = [["A","Maintenance Lift","3×5 @ RPE 7 — main patterns only"],["B","Summer Packet","issued — goes home with every athlete"]];
+const COND_ROWS  = [
+ ["A","Tempo Runs (by mile tier)","GREEN (<8:00): 8-10 x 100yd @ 70% · walk 45s — YELLOW (8:00-10:00): 10-12 x 100yd @ 70% — RED (>10:00): tempo + 20-min aerobic piece"],
+ ["B","Core Circuit","3 rounds 30s/30s: weighted DB crunch · Copenhagen hold · side plank · farmer carry"],
+ ["C","Mobility","hips + ankles · 2 rounds: half-kneeling hip flexor 30s each · ankle rocks x10 each"],
+ ["D","Arm Care","band pull-aparts 2x15 · scap push-ups 2x10"]];
+const P0_D1 = [
+ ["A","Bodyweight Squat","3x10 · 3-sec down, pause at the bottom, chest tall"],
+ ["B","Hinge Pattern — Broomstick RDL","3x8 · stick stays on head, upper back, and hips"],
+ ["C","Push-Up","3x8 · elevate hands if form breaks · body in one line"],
+ ["D","Inverted Row","3x8 · body straight, full squeeze at the top"],
+ ["E","Dead Bug","3x8 each side · low back stays down"],
+ ["F","Farmer Carry","3x20yd · tall posture, no lean"]];
+const P0_D2 = [
+ ["A","Prying Squat Hold","3x20s · elbows push knees out, heels down"],
+ ["B","Split Squat","3x6 each · knee tracks over toe, control down"],
+ ["C","Front Rack Wall Drill","3x5 · elbows up — builds the front squat rack"],
+ ["D","Flexed-Arm Hang / Pull-Up Hang","3x10-20s · sets the Pull-Up Ladder level"],
+ ["E","Glute Bridge","3x10 · 2-sec squeeze at the top"],
+ ["F","Plank Series","front 3x20s + side 2x15s each"],
+ ["G","Landing Mechanics — Snap-Down","3x5 · stick it and hold 2s"]];
+const P0_COND = [
+ ["A","Tempo Runs","6-8 x 100yd @ 70% · walk 45s — learn the pace, stay smooth"],
+ ["B","Core Circuit","2 rounds 30s/30s: dead bug · side plank · bird dog"],
+ ["C","Arm Care","band pull-aparts 2x15 · scap push-ups 2x10"]];
+const P0_BAR = [
+ ["A","Bar Front Squat","3x5 · empty bar · rack by level"],
+ ["B","Bar RDL","3x5 · empty bar · hinge, not squat"],
+ ["C","Bar Bench Press","3x5 · empty bar · spotter on every set"],
+ ["D","Bar Row","3x8 · empty bar · flat back"],
+ ["E","Rack Review","rack heights, spotting, loading etiquette — before any weight goes on"]];
+const SCREEN_ROWS= [
+ ["A","Movement Screen","overhead squat · hinge · lunge · push-up · landing — scored, notes per athlete"],
+ ["B","Baseline Battery","vertical (best of 3) · broad (best of 3) · 5-10-5 (2 each way) · paced mile"],
+ ["C","Technique Placement","Front Rack Level + Pull-Up Ladder level assigned"],
+ ["D","Placement","into the All-Sport 2-Day · Foundation track after week 3"]];
+const PREP_ROWS  = [
+ ["A","Bench Press","3x5 @ RPE 7 · crisp"],
+ ["B","Front Squat","3x5 @ RPE 7 · rack by level"],
+ ["C","Trap Bar Deadlift","3x5 @ RPE 7"],
+ ["D","Chest Supported Row","3x8"],
+ ["E","Pull-Up Ladder","3x5 · by level"],
+ ["F","Summer Packet","issued — goes home with every athlete"]];
 const PRES_ROWS  = {2:[["A","Shuttle Run","4 × 30 ft"],["B","Vertical Jump","best of 3"]],
                     3:[["A","Curl-Up","1 minute · cadence"],["B","Push-Up","cadence to failure"],["C","Sit-and-Reach","best of 3 · V-sit"]],
                     4:[["A","Curl-Up","1 minute · cadence"],["B","Push-Up","cadence to failure"],["C","Sit-and-Reach","best of 3 · V-sit"]],
@@ -447,13 +485,22 @@ function classSectionHTML(date, dISO){
     let title, wu="", rows, badges="";
     if(info.pres){ title = "Presidential Fitness Final"; rows = PRES_ROWS[dow]; badges += `<span class="badge b-p0">FINAL WINDOW</span>`; }
     else if(info.p0){
-      rows = (c.ltad ? SCREEN_ROWS : P0_ROWS);
-      title = c.ltad ? "Movement Screen + Baseline" : "Phase 0 · Movement Literacy";
-      if(kind==="speed"){ title="Speed & Power"; rows=speedRowsFor(info); }
-      if(kind==="cond"){ title="Conditioning"; rows=COND_ROWS; }
+      if(c.ltad){ title = "Movement Screen + Baseline"; rows = SCREEN_ROWS; }
+      else if(kind==="speed"){ title = "Speed & Power"; rows = speedRowsFor(info); }
+      else if(kind==="cond"){
+        if(dISO==="2026-08-28"){ title = "Empty Bar Intro — first bar day"; rows = P0_BAR; }
+        else { title = "Phase 0 · Conditioning"; rows = P0_COND; }
+      }
+      else if(kind==="lift2"){ title = "Phase 0 · Movement Day 2 (Squat + Lunge + Pull)"; rows = P0_D2; }
+      else { title = "Phase 0 · Movement Day 1 (Push + Hinge)"; rows = P0_D1; }
       badges += `<span class="badge b-p0">PHASE 0</span>`;
     }
-    else if(info.prep){ title = "Summer Prep · Maintenance"; rows = PREP_ROWS; badges += `<span class="badge b-p0">SUMMER PREP</span>`; }
+    else if(info.prep){
+      if(kind==="speed"){ title = "Speed & Power"; rows = speedRowsFor(info); }
+      else if(kind==="cond"){ title = "Conditioning"; rows = COND_ROWS; }
+      else { title = "Summer Prep · Maintenance"; rows = PREP_ROWS; }
+      badges += `<span class="badge b-p0">SUMMER PREP</span>`;
+    }
     else {
       const w = DATA.twoday[String(info.wk)];
       if(kind==="lift1"){ const d=w.days[0]; title=d.title; rows=d.rows; wu=w.wu; }
@@ -465,6 +512,13 @@ function classSectionHTML(date, dISO){
     if(isBlock) badges += `<span class="badge b-blk">BLOCK · 80 MIN</span>`;
     const tst = tests.all || (c.blockDow===3 && tests.wed) || (c.blockDow===4 && tests.thu);
     if(tst && kind!=="off") badges += `<span class="badge b-test">TEST</span>`;
+    // Presidential windows: show exactly what is being tested.
+    // Baseline (Phase 0) — the test IS the session. Midpoint — stations are added to the day, not replacing it.
+    const presRows = PRES_ROWS[dow];
+    if(tst && !info.pres && String(tst).indexOf("Presidential")>=0 && presRows){
+      if(info.p0){ title = "Presidential Fitness Baseline"; rows = presRows; }
+      else rows = rows.concat(presRows.map((r,i)=>["P"+(i+1), r[1], r[2]]));
+    }
     const sub = (tst? "TEST: "+tst+" · " : "") + `${c.prog}${c.ltad?" · Foundation track":""} · ${c.n} athletes` + (info.label && !info.wk ? " · "+info.label : "") + (info.extra? " · "+info.extra : "");
     const time = (dISO==="2026-11-13" && c.blockDow===3) ? c.times[5] : c.times[dow];
     const body = `<div class="sesshead"><span>${title}</span>${wu?`<span class="wu">Warm-Up: ${wu}</span>`:""}</div>` +
