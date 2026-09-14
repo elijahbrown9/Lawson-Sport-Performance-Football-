@@ -510,3 +510,28 @@ details.week .week-body { padding: 0 20px 20px; display: grid; gap: 16px; }
 @media (max-width: 720px) {
   .cat-row { grid-template-columns: 104px 1fr 44px; }
 }
+
+/* ---------- Readiness — load management ---------- */
+.rk { font-family: var(--font-display); font-weight: 700; color: var(--muted); }
+.pname { font-family: var(--font-display); font-size: 17px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; }
+.peak { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--accent); }
+tr.dim .pname, tr.dim .peak { color: var(--faint); }
+.feu { font-weight: 700; color: var(--ink); }
+.why { color: var(--muted); font-size: 13.5px; }
+.chg-up { color: #7ddc9c; }
+.chg-dn { color: #ff8f8f; }
+.chg-na { color: var(--faint); }
+.roleb {
+  font-family: var(--font-display); font-size: 10.5px; font-weight: 700;
+  letter-spacing: 0.12em; color: var(--faint); border: 1px solid var(--border);
+  border-radius: 999px; padding: 2px 8px; white-space: nowrap; vertical-align: middle;
+}
+.pill {
+  font-family: var(--font-display); font-size: 12px; font-weight: 700;
+  letter-spacing: 0.12em; border-radius: 999px; padding: 3px 10px;
+  border: 1px solid; white-space: nowrap;
+}
+.pill-red    { color: #ff8f8f; border-color: rgba(255,143,143,.45); background: rgba(255,143,143,.08); }
+.pill-amber  { color: var(--accent); border-color: rgba(255,199,43,.45); background: rgba(255,199,43,.08); }
+.pill-yellow { color: #ffe08a; border-color: rgba(255,224,138,.4); background: rgba(255,224,138,.07); }
+.pill-green  { color: #7ddc9c; border-color: rgba(125,220,156,.4); background: rgba(125,220,156,.07); }
